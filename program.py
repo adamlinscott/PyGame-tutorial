@@ -1,6 +1,13 @@
 # Import the modules
 import sys
 import random
+import pygame
+from pygame.locals import *
+
+#open game window
+pygame.init()
+width, height = 640, 480
+screen = pygame.display.set_mode((width, height))
 
 
 while True:
