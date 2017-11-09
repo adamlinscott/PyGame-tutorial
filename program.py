@@ -62,14 +62,14 @@ while True:
 			elif event.key==pygame.K_d:
 				keys[3]=False
 				
-		#move player
-		if keys[0]:
-			playerpos[1]-=5
-		elif keys[2]:
-			playerpos[1]+=5
-		if keys[1]:
-			playerpos[0]-=5
-		elif keys[3]:
-			playerpos[0]+=5
+	#move player
+	if keys[0]:
+		playerpos[1]-=5
+	elif keys[2]:
+		playerpos[1]+=5
+	if keys[1]:
+		playerpos[0]-=5
+	elif keys[3]:
+		playerpos[0]+=5
 
 			
