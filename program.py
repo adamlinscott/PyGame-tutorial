@@ -3,6 +3,7 @@ import sys
 import random
 import pygame
 import time
+import math
 from pygame.locals import *
 
 #Variables
@@ -38,7 +39,13 @@ while True:
 	for x in range(width/grass.get_width()+1):
 		for y in range(height/grass.get_height()+1):
 			screen.blit(grass,(x*100,y*100))
-	screen.blit(player, playerpos)
+
+	#rotate image to face mouse
+	mPosition = pygame.mouse.get_pos()
+	angle = math.atan2(mPosition[1]-(playerpos[1]),mPosition[0]-(playerpos[0]))
+	playerrot = pygame.transform.rotate(player, 360-angle*57.29)
+	playerpos1 = (playerpos[0]-playerrot.get_rect().width/2, playerpos[1]-playerrot.get_rect().height/2)
+	screen.blit(playerrot, playerpos1) 
 	
 	#update window
 	pygame.display.flip()
