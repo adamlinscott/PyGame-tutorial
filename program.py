@@ -10,22 +10,22 @@ width, height = 640, 480
 screen = pygame.display.set_mode((width, height))
 
 
+#load player
+player = pygame.image.load("resources/images/dude.png")
+
+
+#Game loop
 while True:
-    question = raw_input("Ask the magic 8 ball a question: (press enter to quit) ")
-    
-    answers = random.randint(1,4)
-    
-    if question == "":
-        sys.exit()
-    
-    elif answers == 1:
-        print "It is certain"
-    
-    elif answers == 2:
-        print "Outlook good"
-    
-    elif answers == 3:
-        print "You may rely on it"
-    
-    elif answers == 4:
-        print "Ask again later"
+	#draw image on screen
+	screen.blit(player, (100,100))
+	#update window
+	pygame.display.flip()
+	
+	
+	#check for intent to close game
+	for event in pygame.event.get():
+		# check if the event is the X button 
+		if event.type==pygame.QUIT:
+			# if it is quit the game
+			pygame.quit() 
+			exit(0) 
