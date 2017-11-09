@@ -2,6 +2,7 @@
 import sys
 import random
 import pygame
+import time
 from pygame.locals import *
 
 #Variables
@@ -19,20 +20,31 @@ player = pygame.image.load("resources/images/dude.png")
 grass = pygame.image.load("resources/images/grass.png")
 
 
+#function to get the time between each frame
+lastFrameTime = int(round(time.time() * 1000))
+def FrameDeltaTime():
+	global lastFrameTime
+	delta = int(round(time.time() * 1000)) - lastFrameTime
+	lastFrameTime = int(round(time.time() * 1000))
+	return delta
+
+
 #Game loop
 while True:
 	#clear screen
 	screen.fill(0)	
-	
 	
 	#draw image on screen
 	for x in range(width/grass.get_width()+1):
 		for y in range(height/grass.get_height()+1):
 			screen.blit(grass,(x*100,y*100))
 	screen.blit(player, playerpos)
+	
 	#update window
 	pygame.display.flip()
 	
+	#update deltatime
+	deltaTime = FrameDeltaTime()
 	
 	#check for intent to close game
 	for event in pygame.event.get():
@@ -64,12 +76,12 @@ while True:
 				
 	#move player
 	if keys[0]:
-		playerpos[1]-=5
+		playerpos[1]-=1 * deltaTime
 	elif keys[2]:
-		playerpos[1]+=5
+		playerpos[1]+=1 * deltaTime
 	if keys[1]:
-		playerpos[0]-=5
+		playerpos[0]-=1 * deltaTime
 	elif keys[3]:
-		playerpos[0]+=5
+		playerpos[0]+=1 * deltaTime
 
 			
